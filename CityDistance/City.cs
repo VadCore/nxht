@@ -34,8 +34,6 @@ namespace Nxsht
         static T Swap<T>(ref T obj1, ref T obj2) =>
             ((obj1, obj2) = (obj2, obj1)).obj1;
 
-        
-
         public void CalcAggragateDistance(List<City> cities)
         {
             City city;

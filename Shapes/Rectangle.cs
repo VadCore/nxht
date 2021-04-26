@@ -19,9 +19,7 @@ namespace Nxsht
             Point2ShiftY *= factor;
         }
 
-        public override string ToString()
-        {
-            return base.ToString() + string.Format($", Point2ShiftX = {Point2ShiftX}, Point2ShiftY = {Point2ShiftY}");
-        }
+        public override string ToString()=>
+            base.ToString() + string.Format($", Point2ShiftX = {Point2ShiftX}, Point2ShiftY = {Point2ShiftY}");
     }
 }

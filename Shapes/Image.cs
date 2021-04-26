@@ -9,10 +9,7 @@ namespace Nxsht
         public Image(double anchorPointX, double anchorPointY)
             : base(anchorPointX, anchorPointY) { }
 
-        public void AddFigure(Point figure)
-        {
-            figures.Add(figure);
-        }
+        public void AddFigure(Point figure) => figures.Add(figure);
 
         public override void Scale(double factor)
         {
