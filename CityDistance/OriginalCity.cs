@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NixSolHT1.CityDistance
+namespace NxsthOriginal
 {
     struct City
     {
