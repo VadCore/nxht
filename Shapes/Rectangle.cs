@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NixSolHomeTask1
+﻿
+namespace Nxsht
 {
     public class Rectangle : Point
     {

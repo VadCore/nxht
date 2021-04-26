@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace NixSolHomeTask1
+namespace Nxsht
 {
     public struct City
     {
@@ -15,9 +14,6 @@ namespace NixSolHomeTask1
     class CityDistance
     {
         private List<City> cities;
-
-        private Dictionary<string, int> cityAggregateDistance = new Dictionary<string, int>();
-
         public CityDistance()
         {
             cities = new List<City>();

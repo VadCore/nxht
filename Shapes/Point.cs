@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace NixSolHomeTask1
+namespace Nxsht
 {
     public abstract class Point
     {
@@ -19,6 +17,4 @@ namespace NixSolHomeTask1
 
         public abstract void Scale (double factor);
     }
-
-
 }

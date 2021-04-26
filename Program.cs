@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NixSolHomeTask1
+namespace Nxsht
 {
     class Program
     {
