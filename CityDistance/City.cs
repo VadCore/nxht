@@ -8,9 +8,7 @@ namespace Nxsht
     {
         public string Name;
         public int Distance;
-        public int AggregateDistance;
     }
-
     class CityDistance
     {
         private List<City> cities;
@@ -33,18 +31,6 @@ namespace Nxsht
 
         static T Swap<T>(ref T obj1, ref T obj2) =>
             ((obj1, obj2) = (obj2, obj1)).obj1;
-
-        public void CalcAggragateDistance(List<City> cities)
-        {
-            City city;
-
-            for (int i = 1, dist = 0; i < cities.Count; i++)
-            {
-                city = cities[i];
-                city.AggregateDistance = dist += cities[i].Distance;
-                cities[i] = city;
-            }
-        }
 
         public int GetDistanceLinq(string cityFrom, string cityTo) =>
       cities.AsQueryable()
