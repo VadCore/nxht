@@ -11,17 +11,17 @@ namespace NixSolHT1.Students
 
         public void AddStudent(Student stud)
         {
-            if (stud != null && !MarksOfStudents.ContainsKey(stud))
-            {
-                MarksOfStudents.Add(stud, new List<int>());
-                Console.WriteLine($"Student {stud.Name} {stud.SurName} added successfully!");
-            }
-            
-            else if (MarksOfStudents.ContainsKey(stud))
-                Console.WriteLine($"Student {stud.Name} {stud.SurName} has already been added to the journal!");
+            if(stud is null || !(stud is Student))
+                Console.WriteLine("This object is not valid!");
+
+            if (MarksOfStudents.ContainsKey(stud))
+                Console.WriteLine($"Student {stud.FullName} has already been added to the journal!");
 
             else
-                Console.WriteLine("Something went wrong");
+            {
+                MarksOfStudents.Add(stud, new List<int>());
+                Console.WriteLine($"Student {stud.FullName} added successfully!");
+            }
         }
 
         public void AddMarkToStudent(Student stud, int mark)
@@ -29,13 +29,13 @@ namespace NixSolHT1.Students
             if (!(mark >= 0 && mark <= 100))
                 Console.WriteLine("Error. the mark must be in range 0 - 100");
 
-            else if (stud == null || !MarksOfStudents.ContainsKey(stud))
+            if (stud == null || !MarksOfStudents.ContainsKey(stud))
                 Console.WriteLine("Such a student was not found in the journal");
 
             else
             {
                 MarksOfStudents.Where(s => s.Key == stud).SingleOrDefault().Value.Add(mark);
-                Console.WriteLine($"Student {stud.Name} {stud.SurName} get mark {mark}");
+                Console.WriteLine($"Student {stud.FullName} get mark {mark}");
             }
                 
         }
@@ -47,15 +47,17 @@ namespace NixSolHT1.Students
                 Console.WriteLine("Student not found or null!");
             }
 
-            else if (MarksOfStudents.Where(s => s.Key == stud).FirstOrDefault().Value.Count == 0)
+            else if (MarksOfStudents.Where(s => s.Key == stud).FirstOrDefault().Value.Count != 0)
             {
-                Console.WriteLine($"The student {stud.Name} {stud.SurName} no ratings yet.");
+                Console.WriteLine($"The student {stud.FullName} no ratings yet.");
+
+                var avrMark = MarksOfStudents.Where(s => s.Key == stud).FirstOrDefault().Value.Average();
+                Console.WriteLine($"Average mark for student {stud.FullName} = {avrMark}");
             }
 
             else
             {
-                var avrMark = MarksOfStudents.Where(s => s.Key == stud).FirstOrDefault().Value.Average();
-                Console.WriteLine($"Average mark for student {stud.Name} {stud.SurName} = {avrMark}");
+                Console.WriteLine($"The student {stud.FullName} no ratings yet.");
             }
         }
 
@@ -65,10 +67,10 @@ namespace NixSolHT1.Students
 
             Console.WriteLine("Underperforming students list:");
 
-            MarksOfStudents
-                .Where(s => s.Value.Count > 0 && s.Value.Average() < minGoodMark)
-                .ToList()
-                .ForEach(x=> Console.WriteLine(x.Key.Name + " "+ x.Key.SurName));
+            foreach(var s in MarksOfStudents)
+                if (s.Value.Count > 0 && s.Value.Average() < minGoodMark)
+                    Console.WriteLine(s.Key.FullName);
+            
         }
 
         public void GetAvrMarkForFaculty(string faculty)
@@ -83,7 +85,7 @@ namespace NixSolHT1.Students
                 Console.WriteLine($"Average marks in faculty {faculty} = {avrFacultyMark}");
             }
             else
-                Console.WriteLine("Sorry this faculty not have marks or not found!");
+                Console.WriteLine("Sorry this faculty have not marks or not found!");
         }
 
     }
