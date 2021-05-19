@@ -7,16 +7,16 @@ CREATE TABLE RoomCategory(
 
 CREATE TABLE Room(
 	Id int NOT NULL PRIMARY KEY,
-	RoomNumber int,
+	RoomNumber int NOT NULL,
 	RoomCategoryId int NOT NULL FOREIGN KEY REFERENCES [RoomCategory](Id),
-	[Floor] int,
+	[Floor] int NOT NULL,
 )
 
 CREATE TABLE Guest(
 	Id int NOT NULL PRIMARY KEY,
-	FullName nvarchar(500) NOT NULL,
-	DateOfBirthday datetime NOT NULL,
-	ResidenceAddress nvarchar(100)
+	FullName nvarchar(127) NOT NULL,
+	DateOfBirthday date NOT NULL,
+	ResidenceAddress nvarchar(127)
 )
 
 CREATE TABLE Reservation(
